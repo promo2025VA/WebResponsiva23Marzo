@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidad Educativa "23 de Marzo" - Villa Abecia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables y estilos base */
+        :root {
+           /*  --primary: #1a4d8c; */
+            --primary: #f8dc3a;
+            --secondary: #5ecc1f;
+           /*  --secondary: #2e7d32; */
+           /*  --accent: #ff6b00; */
+            --accent: #1176f3;
+            --light: #f5f9ff;
+            --dark: #2132e6;
+            --text: #333;
+            --gray: #666;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            transition: all 0.3s;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            background-color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 0.8rem;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+
+        .logo-text h1 {
+            font-size: 1.6rem;
+            margin-bottom: 5px;
+        }
+
+        .logo-text p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .language-selector {
+            position: relative;
+        }
+
+        .language-btn {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .language-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 10px 0;
+            min-width: 150px;
+            display: none;
+            z-index: 10;
+        }
+
+        .language-options.active {
+            display: block;
+        }
+
+        .language-option {
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .language-option:hover {
+            background: var(--light);
+        }
+
+        .language-option.active {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--white);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 77, 140, 0.8), rgba(26, 35, 126, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2.5rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #e55a00;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+        }
+
+        /* Secciones */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 25%;
+            width: 50%;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            font-size: 1.1rem;
+        }
+
+        /* Logros */
+        .achievements {
+            background-color: var(--white);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .achievement-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .achievement-img {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .achievement-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .achievement-card:hover .achievement-img img {
+            transform: scale(1.05);
+        }
+
+        .img-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .achievement-img:hover .img-overlay {
+            transform: translateY(0);
+        }
+
+        .achievement-info {
+            padding: 1.8rem;
+        }
+
+        .achievement-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .achievement-info p {
+            color: var(--text);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Miembros */
+        .members {
+            background-color: #f0f7ff;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .member-card {
+            text-align: center;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            overflow: hidden;
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(26, 77, 140, 0.8);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 50%;
+        }
+
+        .member-photo:hover .member-overlay {
+            opacity: 1;
+        }
+
+        .member-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        .member-role {
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Galería */
+        .gallery {
+            background-color: var(--white);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background-color: #e9ecef;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: var(--white);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Historia */
+        .history {
+            background-color: #f0f7ff;
+        }
+
+        .history-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .history-text {
+            font-size: 1.1rem;
+        }
+
+        .history-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .history-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .history-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Contacto */
+        .contact {
+            background-color: var(--white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3.5rem;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 1.8rem;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+        }
+
+        .contact-details i {
+            color: var(--secondary);
+            width: 20px;
+            margin-top: 3px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(26, 77, 140, 0.4);
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.7rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .contact-form textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            color: var(--white);
+            padding: 4rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.8rem;
+            font-size: 1.3rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.9rem;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            transform: translateX(5px);
+        }
+
+        .footer-links a i {
+            width: 20px;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            nav ul {
+                gap: 1.2rem;
+            }
+
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--primary);
+                padding: 1rem 0;
+                text-align: center;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .history-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 3.5rem 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 3.5rem 0;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .achievements-grid,
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-img">
+                        UE<br>23 MARZO
+                    </div>
+                    <div class="logo-text">
+                        <h1 data-lang="es">Unidad Educativa "23 de Marzo"</h1>
+                        <h1 data-lang="en" style="display:none">Educational Unit "23 de Marzo"</h1>
+                        <p data-lang="es">Villa Abecia - Forjando líderes del mañana</p>
+                        <p data-lang="en" style="display:none">Villa Abecia - Shaping tomorrow's leaders</p>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span id="current-language">Español</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="language-options">
+                            <div class="language-option active" data-lang="es">
+                                <i class="fas fa-check"></i>
+                                Español
+                            </div>
+                            <div class="language-option" data-lang="en">
+                                English
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mobile-menu">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li><a href="#inicio" data-lang="es">Inicio</a><a href="#inicio" data-lang="en" style="display:none">Home</a></li>
+                            <li><a href="#logros" data-lang="es">Logros</a><a href="#logros" data-lang="en" style="display:none">Achievements</a></li>
+                            <li><a href="#miembros" data-lang="es">Miembros</a><a href="#miembros" data-lang="en" style="display:none">Members</a></li>
+                            <li><a href="#galeria" data-lang="es">Galería</a><a href="#galeria" data-lang="en" style="display:none">Gallery</a></li>
+                            <li><a href="#historia" data-lang="es">Historia</a><a href="#historia" data-lang="en" style="display:none">History</a></li>
+                            <li><a href="#contacto" data-lang="es">Contacto</a><a href="#contacto" data-lang="en" style="display:none">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2 data-lang="es"> Unidad Educativa 23 de Marzo "Villa Abecia"</h2>
+            <h2 data-lang="en" style="display:none">Educational Excellence in Villa Abecia</h2>
+            <p data-lang="es">Más de 35 años formando estudiantes con valores, conocimientos y compromiso social para un futuro mejor</p>
+            <p data-lang="en" style="display:none">Over 30 years shaping students with values, knowledge and social commitment for a better future</p>
+            <a href="#historia" class="btn" data-lang="es">Conoce Nuestra Historia</a>
+            <a href="#historia" class="btn" data-lang="en" style="display:none">Learn Our History</a>
+        </div>
+    </section>
+
+    <!-- Logros -->
+    <section id="logros" class="achievements">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">Nuestros Logros</h2>
+                <h2 data-lang="en" style="display:none">Our Achievements</h2>
+                <p data-lang="es">Destacados académicos, deportivos y culturales que nos enorgullecen</p>
+                <p data-lang="en" style="display:none">Outstanding academic, sports and cultural figures who make us proud</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-img">
+                        <!-- Reemplaza con tu imagen -->
+                        <img src=".\\imagenes\academico.jpg"  alt="Premio académico">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">logro academico </h4>
+                            <h4 data-lang="en" style="display:none">academic achievement</h4>
+                            <p data-lang="es">Primer lugar en competencia  del cocimiento del saber de los juegos interpromociones 2025</p>
+                            <p data-lang="en" style="display:none">First place in the knowledge competition of the inter-promotion games 2025</p>
+                        </div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 data-lang="es">Premio  Académico</h3>
+                        <h3 data-lang="en" style="display:none">Academic Award</h3>
+                        <p data-lang="es">los estudiantes de la promocion 2025 obtuvieron el primer lugra del conocimiento del saber de los juegos interpromociones 2025</p>
+                        <p data-lang="en" style="display:none">The students of the class of 2025 obtained first place in the knowledge competition of the 2025 inter-class games.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-img">
+                        <!-- Reemplaza con tu imagen -->
+                        <img src=".\\imagenes\deporte.jpg" alt="Competencia deportiva">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">juegos integracion  2025</h4>
+                            <h4 data-lang="en" style="display:none">juegos integracion  2025</h4>
+                            <p data-lang="es">los estudiantes de la U.E 23 de marzo lograron traer por  cuatro anos consecutivos la copa rotatoria de los juegos intragracion de sur </p>
+                            <p data-lang="en" style="display:none">The students of U.E. March 23rd managed to bring home the rotating cup of the South Intragradation Games for four consecutive years</p>
+                        </div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 data-lang="es"> logro deportivo</h3>
+                        <h3 data-lang="en" style="display:none">sports achievement</h3>
+                        <p data-lang="es">la unidad educativa logro cuatro años consecutivos quedarse con la copa rotatoria de los juegos integracion del sur</p>
+                        <p data-lang="en" style="display:none">The educational unit managed to win the rotating cup of the Southern Integration Games for four consecutive years.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-img">
+                        <!-- Reemplaza con tu imagen -->
+                        <img src=".\\imagenes\cultura.jpg"  alt="Festival cultural">
+                        <div class="img-overlay">
+                            <h4 data-lang="es">juegos integracion del sur 2025</h4>
+                            <h4 data-lang="en" style="display:none">Southern Integration Games 2025</h4>
+                            <p data-lang="es">Reconocimiento  de segundo lugar</p>
+                            <p data-lang="en" style="display:none">Second place recognition</p>
+                        </div>
+                    </div>
+                    <div class="achievement-info">
+                        <h3 data-lang="es">Arte y Cultura</h3>
+                        <h3 data-lang="en" style="display:none">Art and Culture</h3>
+                        <p data-lang="es">en los juegos de integracion obtivieron el premio en danza el segundo lugar.</p>
+                        <p data-lang="en" style="display:none">In the integration games they won second place in dance.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Miembros -->
+    <section id="miembros" class="members">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">Nuestra Comunidad Educativa</h2>
+                <h2 data-lang="en" style="display:none">Our Educational Community</h2>
+                <p data-lang="es">Docentes y estudiantes comprometidos con la excelencia educativa</p>
+                <p data-lang="en" style="display:none">Teachers and students committed to educational excellence</p>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-photo">
+                        <!-- Reemplaza con foto del director -->
+                        <img src=".\\imagenes\directora.jpg" alt="Directora">
+                        <div class="member-overlay">
+                            <p data-lang="es">Directora de la U. E. 23 de Marzo</p>
+                            <p data-lang="en" style="display:none">Directora de la U. E. 23 de Marzo</p>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Lic. Vilma Taboada Segovia </h3>
+                        <p class="member-role" data-lang="es">Directora</p>
+                        <p class="member-role" data-lang="en" style="display:none">Principal</p>
+                        <p data-lang="es">Liderando nuestra institución hacia la excelencia educativa desde 2024.</p>
+                        <p data-lang="en" style="display:none">Leading our institution towards educational excellence since 2024.</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <!-- Reemplaza con foto de profesora -->
+                        <img src=".\\imagenes\profer elvira.jpg" alt="Profesora de lengua extrangera">
+                        <div class="member-overlay">
+                            <p data-lang="es"> Dicta la materia de lengua extrangera "ingles"</p>
+                            <p data-lang="en" style="display:none">Teach the foreign language subject "English"</p>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Prof. Elvira Zarate Molina</h3>
+                        <p class="member-role" data-lang="es">Subdirectora</p>
+                        <p class="member-role" data-lang="en" style="display:none">Subdirectora</p>
+                        <p data-lang="es">Comprometida con la innovación educativa y el desarrollo integral de los estudiantes.</p>
+                        <p data-lang="en" style="display:none">Committed to educational innovation and the comprehensive development of students.</p>
+                    </div>
+                </div>
+                <div class="member-card">
+                    <div class="member-photo">
+                        <!-- Reemplaza con foto de estudiante -->
+                        <img src=".\\imagenes\presidenta.jpg" alt="Estudiante destacada">
+                        <div class="member-overlay">
+                            <p data-lang="es">Presidente del gobierno estudiantil 2025</p>
+                            <p data-lang="en" style="display:none">Student government president 2025</p>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h3>Luz Angela Cardenas </h3>
+                        <p class="member-role" data-lang="es">Presidenta Estudiantil</p>
+                        <p class="member-role" data-lang="en" style="display:none">Student President</p>
+                        <p data-lang="es">Representante estudiantil comprometida con el bienestar de la comunidad educativa.</p>
+                        <p data-lang="en" style="display:none">Student representative committed to the welfare of the educational community.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería -->
+    <section id="galeria" class="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">Galería Institucional</h2>
+                <h2 data-lang="en" style="display:none">Institutional Gallery</h2>
+                <p data-lang="es">Momentos especiales que capturan la esencia de nuestra institución</p>
+                <p data-lang="en" style="display:none">Special moments that capture the essence of our institution</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <!-- Reemplaza con tu imagen 1 -->
+					 <img src=".\\imagenes\comienzo_de_clases.jpg" alt=" comienzo de clases de la gestion ">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es"> inaguracion de comienzo de clases gestion 2025</h4>
+                        <h4 data-lang="en" style="display:none">Opening ceremony for the start of classes, 2025 school year</h4>
+                        <p data-lang="es">la inaguracion cuenta con la directora, distral ,profesores y estudiantes de la U. E. 23 de marzo </p>
+                        <p data-lang="en" style="display:none">The inauguration is attended by the director, district representative, teachers and students of the U.E. March 23</p>
+                    </div>
+                </div>
+				<!-- Reemplaza con tu imagen 2 -->
+                <div class="gallery-item">
+                    <img src=".\\imagenes\bautizo_nuevos.jpg" alt="Actividad en el Colegio">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">bautizo</h4>
+                        <h4 data-lang="en" style="display:none">christening</h4>
+                        <p data-lang="es">los estudiantes nuvos siendo bautizados por la promocion OOZMA KAPPA</p>
+                        <p data-lang="en" style="display:none">The new students being baptized by the OOZMA KAPPA promotion</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Reemplaza con tu imagen 3 -->
+                    <img src=".\\imagenes\talento_superdotacion.jpg" alt="talento y la superdotacion">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">dia del talento y la superdotacion </h4>
+                        <h4 data-lang="en" style="display:none">dia del talento y la superdotacion</h4>
+                        <p data-lang="es">los niños de primero expresan su talento con dibujos y palabras</p>
+                        <p data-lang="en" style="display:none">First grade children express their talent through drawings and words</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Reemplaza con tu imagen 5 -->
+                    <img src=".\\imagenes\dibujo_dia_la_madre.jpg" alt="Dibujo y pintura en honor al dia de la madre">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">dibujo y pintura en honor al dia de la madre</h4>
+                        <h4 data-lang="en" style="display:none">Drawing and painting in honor of Mother's Day</h4>
+                        <p data-lang="es">los estudiantes de la U. E. 23 de marzo pintaron con acuarelas y lapiz en homenaje al dia de la madre</p>
+                        <p data-lang="en" style="display:none">Students from U.E. March 23rd painted with watercolors and pencils in homage to Mother's Day</p>
+                    </div>
+                </div>
+                 <div class="gallery-item">
+				  <!-- Reemplaza con tu imagen 6-->
+                    <img src=".\\imagenes\27deMayo.jpg" alt="Dibujo y pintura en honor al dia de la madre">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">homenaje el dia de la madre </h4>
+                        <h4 data-lang="en" style="display:none">Mother's Day tribute </h4>
+                        <p data-lang="es">los estiantes dieron un omenaje al dia de la madre </p>
+                        <p data-lang="en" style="display:none">The students paid tribute to Mother's Day</p>
+                    </div>
+                </div>
+                 <div class="gallery-item">
+                    <!-- Reemplaza con tu imagen 6 -->
+                    <img src=".\\imagenes\feria_educativa.jpg"  alt="inaguracion de la feria educativa ">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">inaguracion de la feria eductiva </h4>
+                        <h4 data-lang="en" style="display:none">opening of the educational fair</h4>
+                        <p data-lang="es">En la feria educativa 23 de marzo, la directora ,distrital, profesores y alumnos abmiraron los innovadores productos elaborados por la carreara tecnica de B.T.H</p>
+                        <p data-lang="en" style="display:none">At the educational fair on March 23, the district director, teachers, and students admired the innovative products developed by the B.T.H. technical program.</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <!-- Reemplaza con tu imagen 7 -->
+                    <img src=".\\imagenes\inaguracion.jpg"  alt="Inaguracion de clases">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">La inaguracion de las escuelas abiertas </h4>
+                        <h4 data-lang="en" style="display:none">The opening of the open schools</h4>
+                        <p data-lang="es">Inagujracion de las esculas habiertas que cuentan con la participacion de los estudiantes y el plantel  docente de la U.E. 23  de marzo</p>
+                        <p data-lang="en" style="display:none">Inauguration of the open schools with the participation of the students and teaching staff of the U.E. March 23</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                   
+                    <!-- Reemplaza con tu imagen 3 -->
+                    <img src=".\\imagenes\plantel_docente.jpg" alt="plantel docente ">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">plantel docente de la U.E. 23 de marzo</h4>
+                        <h4 data-lang="en" style="display:none">teaching staff of the U.E. March 23</h4>
+                        <p data-lang="es">los maetros celebran su dia del maestro</p>
+                        <p data-lang="en" style="display:none">los maetros celebran su dia del maestro</p>
+                    </div>
+                </div>
+               <div class="gallery-item">
+                    <!-- Reemplaza con tu imagen 4 -->
+                    <img src=".\\imagenes\Ciclismo.jpg"  alt="Laboratorio de ciencias">
+                    <div class="gallery-overlay">
+                        <h4 data-lang="es">Dia nacional del ciclismo</h4>
+                        <h4 data-lang="en" style="display:none">National cycling day</h4>
+                        <p data-lang="es">La U. E. 23 de Marzo celebro el dia nacionel del ciclismo, con el objetivo de fomentar a este  deporte </p>
+                        <p data-lang="en" style="display:none">The U.E. 23 de Marzo celebrated National Cycling Day, with the aim of promoting this sport</p>
+                    </div>
+					
+                </div>
+            </div>
+        </div>
+    </section>
+	 <!-- Galería -->
+    <section id="historia " class="gallery">
+        <div class="container">
+           <div class="section-header">
+                <h2 data-lang="es">Nuestra Historia</h2>
+                <h2 data-lang="en" style="display:none">Our History</h2>
+                <p data-lang="es">Una tradición educativa que perdura a través del tiempo</p>
+                <p data-lang="en" style="display:none">An educational tradition that endures through time</p>
+            </div>
+        <div class="history-content">
+                <div class="history-text">
+                    <p data-lang="es">UNIDAD EDUCATIVA
+“23 DE MARZO”
+VILLA ABECIA – Sud Cinti – Chuquisaca – Bolivia
+¡Honor, estudio, disciplina! ¡23 de Marzo siempre en la cima!
+<p data-lang="es">Reseña Histórica de la Unidad Educativa “23 de Marzo”</p
+<p data-lang="es">En el municipio de Villa Abecia Camataquí, capital de la provincia Sud Cinti del
+departamento de Chuquisaca del Estado Plurinacional de Bolivia, se marca un hito
+importante en la historia educativa regional con la creación, en el año 1927, de la
+primera escuela municipal.
+Posteriormente, en 1930, comenzó a funcionar como escuela del Escuela del
+Estado, que durante varias décadas prestó servicios educativos a la comunidad,
+consolidando las bases del sistema educativo local.
+En 1990, gracias al esfuerzo conjunto de padres de familia y maestros
+comprometidos, se logró la ampliación al nivel secundario, implementando un
+curso por gestión. Los padres se organizaron para la construcción de nuevas
+aulas, mientras que los docentes aportaron horas a donores, demostrando un
+profundo compromiso vocacional. Estos esfuerzos permitieron consolidar el nivel
+secundario y lograr la primera promoción de bachilleres en el año 1993, la cual fue
+denominada “Gonzalo Sánchez de Lozada”, en homenaje al entonces Presidente
+de la República de Bolivia.
+Dicha promoción estuvo asesorada por los docentes Prof. Jorge Sánchez Galván y
+Prof. Marta Callejas, y estuvo conformada por los siguientes estudiantes:</p
+	<p data-lang="es">●Óscar Julián Zeballos Camacho</p
+	<p data-lang="es">●Yvar Camacho</p
+	<p data-lang="es">●Miguel Gorena Serrano</p
+	<p data-lang="es">●Juan José Ibáñez Balanza</p
+	<p data-lang="es">●Adolfo Cazón Rodríguez</p
+	<p data-lang="es">●René Cazón Rodríguez</p
+	<p data-lang="es">●Roxana Castro Balanza</p
+	<p data-lang="es">●Ana María Navarro Mancilla</p
+	<p data-lang="es">●Roxana Gorena Lora</p
+	<p data-lang="es">●Norma Medina Miranda</p
+	<p data-lang="es">●Elsa Torres Calizaya</p
+	<p data-lang="es">●Johnny Castro</p
+<p data-lang="es">En el año 2004, la unidad educativa fue reconocida oficialmente con el nombre deColegio Mixto “23 de Marzo” , bajo ordenanza municipal, adquiriendo autonomía
+administrativa y dejando de depender de la unidad educativa “25 de Mayo”. En
+esta nueva etapa institucional, se designó como primer director al
+ profesor Freddy Osmar Sánchez Terrazas.
+En esta nueva etapa institucional, se designó como primer director al profesor
+Freddy Osmar Sánchez Terrazas.
+El plantel docente y administrativo inicial estuvo conformado por:
+	 <p data-lang="es">●Prof. Freddy O. Sánchez Terrazas – Director</p
+	 <p data-lang="es">●Prof. Edith Olmedo Centeno – Matemática, Física y Química</p
+	 <p data-lang="es">●Prof. Óscar Hermenegildo Gallardo Flores – Matemática</p
+	 <p data-lang="es">●Prof. María Rosa Ávila Nachuri – Lenguaje y Literatura</p
+	 <p data-lang="es">●Prof. Roxana Cervantes Peñaranda – Estudios Sociales</p
+	 <p data-lang="es">●Prof. Elvira Zárate Molina – Idiomas</p
+	 <p data-lang="es">●Prof. Indira L. Mercado Ampuero – Ciencias Naturales y Biología</p
+	 <p data-lang="es">●Prof. Octavio Molina Valí – Filosofía, Psicología y Artes Plásticas</p
+	 <p data-lang="es">●Prof. Ángel Vicente Ríos – Educación Física</p
+	 <p data-lang="es">●Prof. Hernán Cuéllar Villegas – Educación Musical</p
+	 <p data-lang="es">●Prof. Nelson Rengifo Calizaya – Religión y Moral</p
+	 <p data-lang="es">●Sr. Julián Ceballos – Secretario</p
+	 <p data-lang="es">●Sr. Óscar Rodríguez Mercado – Portero</p
+Posteriormente, el 10 de julio de 2009, mediante resolución administrativa, la
+institución adoptó oficialmente el nombre de Unidad Educativa “23 de Marzo”,
+consolidando así su identidad institucional.
+En el marco de las políticas de transformación educativa promovidas por la Ley N.º
+070 “Avelino Siñani – Elizardo Pérez”, en la gestión 2021 se incorporó a la oferta
+académica la carrera técnica de Electricidad Industrial, constituyéndose en un hito
+que marcó el inicio del Bachillerato Técnico Humanístico en la institución.
+Continuando con este proceso de fortalecimiento técnico, en la gestión 2024 se
+amplió la oferta educativa con la incorporación de la carrera de Sistemas
+Informáticos, permitiendo a los estudiantes formarse en áreas con alta demanda
+laboral y tecnológica.
+Actualmente, la unidad educativa cuenta con una infraestructura propia, y un
+plantel docente titulado a nivel de licenciatura, comprometido con una formación
+integral y de calidad. Cabe destacar que, hasta la gestión 2025, los profesores
+Óscar Hermenegildo Gallardo Flores y Elvira Zárate Molina, así como el secretario
+Sr. Julián Ceballos y el portero Sr. Óscar Rodríguez Mercado, continúan ejerciendo
+funciones en la institución, siendo testigos y protagonistas del proceso de
+crecimiento institucional.
+En la gestión 2025, la Unidad Educativa “23 de Marzo” conmemora 35 años de la
+creación de su nivel secundario, reafirmando su rol como pilar formativo en la
+comunidad camataqueña y representando con orgullo sus valores institucionales,
+simbolizados por su lema honor estudio y disciplina y sus colores: azul y amarillo..</p>
+                   
+                </div>
+                <div class="history-image">
+                    <!-- Reemplaza con imagen histórica de la institución -->
+                    <img src=".\\imagenes\ESCUDO.jpg"alt="escudo del Colegio">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-lang="es">Contáctanos</h2>
+                <h2 data-lang="en" style="display:none">Contact Us</h2>
+                <p data-lang="es">¿Interesado en nuestra institución? ¡Escríbenos!</p>
+                <p data-lang="en" style="display:none">Interested in our institution? Write to us!</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 data-lang="es">Información de Contacto</h3>
+                    <h3 data-lang="en" style="display:none">Contact Information</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> <span data-lang="es">Plazuela Osio entre Bolivar y Sucre, Villa Abecia, Chuquisaca, Bolivia</span><span data-lang="en" style="display:none">Osio Square between Bolivar and Sucre, Villa Abecia, Chuquisaca, Bolivia</span></p>
+                        <p><i class="fas fa-phone"></i> <span>+591 64715090 - 73401542</span></p>
+                        <p><i class="fas fa-envelope"></i> <span>riveramarcoslabrujadel71@gmail.com segoiviavidaurreynaximena@gmail.com</span></p>
+                        <p><i class="fas fa-clock"></i> <span data-lang="es">Lunes a Viernes: 8:00 -12:00 am 2:30 - 6:30 pm</span><span data-lang="en" style="display:none">Monday to Friday: 7:30 - 16:00</span></p>
+                    </div>
+                    <h3 data-lang="es">Síguenos en redes sociales</h3>
+                    <h3 data-lang="en" style="display:none">Follow us on social media</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 data-lang="es">Envíanos un Mensaje</h3>
+                    <h3 data-lang="en" style="display:none">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" data-lang="es">Nombre completo</label>
+                            <label for="name" data-lang="en" style="display:none">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-lang="es">Correo electrónico</label>
+                            <label for="email" data-lang="en" style="display:none">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject" data-lang="es">Asunto</label>
+                            <label for="subject" data-lang="en" style="display:none">Subject</label>
+                            <select id="subject" required>
+                                <option value="" data-lang="es">Selecciona un asunto</option>
+                                <option value="" data-lang="en" style="display:none">Select a subject</option>
+                                <option value="admisiones" data-lang="es">Admisiones</option>
+                                <option value="admisiones" data-lang="en" style="display:none">Admissions</option>
+                                <option value="informacion" data-lang="es">Información general</option>
+                                <option value="informacion" data-lang="en" style="display:none">General information</option>
+                                <option value="otro" data-lang="es">Otro</option>
+                                <option value="otro" data-lang="en" style="display:none">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-lang="es">Mensaje</label>
+                            <label for="message" data-lang="en" style="display:none">Message</label>
+                            <textarea id="message" required data-lang="es" placeholder="Escribe tu mensaje aquí..."></textarea>
+                            <textarea id="message" required data-lang="en" style="display:none" placeholder="Write your message here..."></textarea>
+                        </div>
+                        <button type="submit" class="btn" data-lang="es">Enviar Mensaje</button>
+                        <button type="submit" class="btn" data-lang="en" style="display:none">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3 data-lang="es">Unidad Educativa "23 de Marzo"</h3>
+                    <h3 data-lang="en" style="display:none">Educational Unit "23 de Marzo"</h3>
+                    <p data-lang="es">Institución educativa comprometida con la formación integral de estudiantes en Villa Abecia, promoviendo valores, conocimiento y ciudadanía responsable.</p>
+                    <p data-lang="en" style="display:none">Educational institution committed to the comprehensive education of students in Villa Abecia, promoting values, knowledge and responsible citizenship.</p>
+                </div>
+                <div class="footer-column">
+                    <h3 data-lang="es">Enlaces Rápidos</h3>
+                    <h3 data-lang="en" style="display:none">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio" data-lang="es"><i class="fas fa-chevron-right"></i> Inicio</a><a href="#inicio" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#logros" data-lang="es"><i class="fas fa-chevron-right"></i> Logros</a><a href="#logros" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Achievements</a></li>
+                        <li><a href="#miembros" data-lang="es"><i class="fas fa-chevron-right"></i> Miembros</a><a href="#miembros" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Members</a></li>
+                        <li><a href="#galeria" data-lang="es"><i class="fas fa-chevron-right"></i> Galería</a><a href="#galeria" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3 data-lang="es">Programas Académicos</h3>
+                    <h3 data-lang="en" style="display:none">Academic Programs</h3>
+                    <ul class="footer-links">
+                       
+                       <li><a href="#" data-lang="es"><i class="fas fa-chevron-right"></i> Educación Secundaria</a><a href="#" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Secondary Education</a></li>
+                        <li><a href="#" data-lang="es"><i class="fas fa-chevron-right"></i> carreras tecnicas BTH</a><a href="#" data-lang="en" style="display:none"><i class="fas fa-chevron-right"></i> Technical Programs</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p> 2025 Unidad Educativa "23 de Marzo" - <span data-lang="es"></span><span data-lang="en" style="display:none">All rights reserved</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sistema de cambio de idioma
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageBtn = document.querySelector('.language-btn');
+            const languageOptions = document.querySelector('.language-options');
+            const currentLanguage = document.getElementById('current-language');
+            let currentLang = 'es';
+            
+            // Mostrar/ocultar opciones de idioma
+            languageBtn.addEventListener('click', function() {
+                languageOptions.classList.toggle('active');
+            });
+            
+            // Cambiar idioma
+            document.querySelectorAll('.language-option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    changeLanguage(lang);
+                    languageOptions.classList.remove('active');
+                    
+                    // Actualizar opción activa
+                    document.querySelectorAll('.language-option').forEach(opt => {
+                        opt.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+            
+            function changeLanguage(lang) {
+                currentLang = lang;
+                
+                // Actualizar botón de idioma
+                if (lang === 'es') {
+                    currentLanguage.textContent = 'Español';
+                } else {
+                    currentLanguage.textContent = 'English';
+                }
+                
+                // Mostrar/ocultar elementos según el idioma
+                document.querySelectorAll('[data-lang]').forEach(element => {
+                    if (element.getAttribute('data-lang') === lang) {
+                        element.style.display = '';
+                    } else {
+                        element.style.display = 'none';
+                    }
+                });
+                
+                // Actualizar placeholders de formularios
+                const messageTextareas = document.querySelectorAll('textarea[data-lang]');
+                messageTextareas.forEach(textarea => {
+                    if (textarea.getAttribute('data-lang') === lang) {
+                        textarea.style.display = '';
+                    } else {
+                        textarea.style.display = 'none';
+                    }
+                });
+            }
+            
+            // Menú móvil
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const navMenu = document.querySelector('nav ul');
+            
+            mobileMenu.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+            });
+            
+            // Cerrar menú al hacer clic en un enlace
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('active');
+                });
+            });
+            
+            // Formulario de contacto
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                if (currentLang === 'es') {
+                    alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
+                } else {
+                    alert('Thank you for your message! We will contact you soon.');
+                }
+                contactForm.reset();
+            });
+            
+            // Smooth scrolling para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
